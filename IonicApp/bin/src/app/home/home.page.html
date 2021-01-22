@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content slot="center">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">
+        <h1 style="color: whitesmoke;">Welcome Back</h1>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list class="margin-top">
+        <h2><p>This page is created with help of Ionic</p>
+          <p>To continue exploring my app, please create an account</p></h2>
+        <ion-button class="margin-top" color="secondary" [routerLink]="['/log-in']">Log in</ion-button>
+        <ion-button class="margin-top" color="secondary" [routerLink]="['/register']">Register</ion-button>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

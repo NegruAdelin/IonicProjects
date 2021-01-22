@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="secondary">
+    <ion-title>
+      Administrators
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="onRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-item color="tertiary" class="margin-bottom">
+    <ion-label><b>Search By</b></ion-label>
+    <ion-select [(ngModel)]="searchBy" (click)="console()">
+      <ion-select-option>Name</ion-select-option>
+      <ion-select-option>Email</ion-select-option>
+      <ion-select-option>Department</ion-select-option>
+      <ion-select-option>Address</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-searchbar placeholder="Search" showCancelButton="never" (ionInput)="search($event)"></ion-searchbar>
+
+  <ion-card *ngFor="let gestionar of filterData" margin>
+    <ion-card-header color="primary">
+      <ion-item  color="primary" lines="none" class="margin-left">
+        <ion-avatar class="margin-right" slot="start">
+          <img src="../../assets/img/{{avatar[(gestionar.id_gestionar%10)]}}.jpg">
+        </ion-avatar>
+        <ion-card-title>
+          <h1>
+            {{gestionar.name_gestionar}}
+          </h1>
+        </ion-card-title>
+      </ion-item>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-card-content >
+        <ion-card-title>
+          <h2><b>Contact:</b></h2>
+        </ion-card-title>
+        <ion-list style="margin-left: 20px;">
+          <h2><ion-label style="margin-right: 10px;"><b>Email:</b> </ion-label>{{gestionar.email_gestionar}}</h2>
+          <h2><ion-label style="margin-right: 10px;"><b>Department:</b> </ion-label>{{gestionar.nume_departament}}</h2>
+          <h2><ion-label style="margin-right: 10px;"><b>Address:</b> </ion-label>{{gestionar.adresa_departament}}</h2>
+        </ion-list>
+      </ion-card-content>
+      <ion-button color="secondary" (click)="edit(gestionar)" *ngIf="storageIdGestionar == 'admin'">edit</ion-button>
+      <ion-button color="secondary" (click)="delete(gestionar)" *ngIf="storageIdGestionar == 'admin'">delete</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

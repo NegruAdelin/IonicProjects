@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="secondary">
+    <ion-title>
+      QR Scan
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <ion-card *ngIf="qrData" class="ion-text-center">
+    <ion-card-content>
+      <ion-button expand="full" (click)="scanCode()" color="secondary">
+        <ion-icon name="scan-outline">
+        </ion-icon>
+        Scan QR
+      </ion-button>
+  </ion-card-content>
+
+  <ion-card-content>
+    <ngx-qrcode
+      [elementType]="elementType" 
+      [value] = "qrData"
+      cssClass = "aclass"
+      errorCorrectionLevel = "L">
+    </ngx-qrcode>
+  </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="result">
+    <ion-card-header color="primary">
+      <ion-card-title>
+        <b>{{result.nume_obiect}}</b>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+  
+        <ion-list style="margin-left: 20px;">
+          <h2><ion-label style="margin-right: 10px;"><b>Description:</b> </ion-label>{{result.descriere_obiect}}</h2>
+          <h2><ion-label style="margin-right: 10px;"><b>Price:</b> </ion-label>{{result.pret_obiect}}</h2>
+          <h2><ion-label style="margin-right: 10px;"><b>Date of purchase:</b> </ion-label>{{result.data_achizitiei_obiect}}</h2>
+          <h2><ion-label style="margin-right: 10px;"><b>Administrator:</b> </ion-label>{{resultGestionar.name_gestionar}} {{resultGestionar.last_name_gestionar}}</h2>
+          <h2><ion-label style="margin-right: 10px;"><b>Department:</b> </ion-label>{{resultDepartament.nume_departament}}</h2>
+          <h2><ion-label style="margin-right: 10px;"><b>Address:</b> </ion-label>{{resultDepartament.adresa_departament}}</h2>
+        </ion-list>
+     
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

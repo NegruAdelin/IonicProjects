@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title>
+      Register
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">
+        <h1 style="color: white;">Please complete all fields</h1>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list padding>
+        <form [formGroup] = "userForm" (ngSubmit)="submit()">
+          <ion-item>
+            <ion-label position="floating">Name: </ion-label>
+            <ion-input [(ngModel)]="nameInput" type="text" formControlName="name"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Last Name: </ion-label>
+            <ion-input [(ngModel)]="lastNameInput" type="text" formControlName="name"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">IdDepartment: </ion-label>
+            <ion-input [(ngModel)]="departamentInput" type="text" formControlName="id"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Email: </ion-label>
+            <ion-input [(ngModel)]="emailInput" type="email" formControlName="email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Password: </ion-label>
+            <ion-input [(ngModel)]="passwordInput" type="password" formControlName="password"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Repeat the password: </ion-label>
+            <ion-input [(ngModel)]="rePasswordInput" type="password" formControlName="password"></ion-input>
+          </ion-item>
+          <ion-button class="margin-top" color="tertiary" type="submit">Submit</ion-button>
+        </form>
+      </ion-list>
+
+      <br>
+      <ion-label *ngIf="msg" color="primary">
+        <h2><b>{{msg}}</b></h2>
+      </ion-label>
+
+      <ion-button class="margin-top" color="secondary" [routerLink]="['/']">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-card-content>
+    
+  </ion-card>
+</ion-content>
